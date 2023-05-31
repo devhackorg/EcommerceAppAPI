@@ -4,9 +4,9 @@ services:
     ecommerce-api-nginx:
         image: nginx:alpine
         container_name: ecommerce-api-nginx
-        working_dir: /app
+        working_dir: /var/www
         volumes:
-            - ./:/app
+            - ./:/var/www
             - ./.docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
         ports:
             - 9090:80
@@ -16,11 +16,11 @@ services:
     ecommerce-api-php:
         build: .
         container_name: ecommerce-api-php
-        working_dir: /app
+        working_dir: /var/www
         expose:
             - 9000
         volumes:
-            - ./:/app
+            - ./:/var/www
         networks:
             - devhack_ecommerce_net
 
